@@ -1,0 +1,42 @@
+spring:
+
+  application:
+    name: pruebat-back-web-demo
+
+  flyway:
+    locations: classpath:migration/versions
+    user: sa
+    password: root
+    enabled: true
+    baseline-on-migrate: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/examples
+    username: sa
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+fwkcna:
+  jpa:
+    data-migration:
+      disabled: false
+
+# Actuator endpoints configuration
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: [ info, health, metrics, prometheus ]
+
+
+server:
+  port: 8080
