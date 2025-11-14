@@ -16,6 +16,16 @@ spring:
     password: root
     driver-class-name: org.postgresql.Driver
 
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+    data-migration:
+      disabled: false
+
 fwkcna:
   jpa:
     data-migration:

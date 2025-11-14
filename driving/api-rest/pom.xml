@@ -37,6 +37,12 @@
     </dependency>
 
     <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+
+    <dependency>
 			<groupId>com.mercadona.framework.cna.api.demotest.arq.web</groupId>
 			<artifactId>arq-web-api-server-cna-21</artifactId>
 			<version>${example.api.version}</version>
