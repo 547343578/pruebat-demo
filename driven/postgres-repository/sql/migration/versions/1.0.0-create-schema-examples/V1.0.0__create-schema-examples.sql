@@ -22,8 +22,8 @@ create table orders (
 -- tabla: order_lines
 create table order_lines (
   line_id bigserial not null,
-  order_id int not null,
-  product_id int not null,
+  order_id bigint not null,
+  product_id bigint not null,
   quantity int not null,
   unit_price numeric(10,2) not null,
   constraint pk_order_lines primary key (line_id),

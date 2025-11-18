@@ -9,6 +9,7 @@ import com.mercadona.pruebt.demo.application.lib.MessagesService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -26,10 +27,10 @@ public class DomainExceptionHandler {
 
     @ExceptionHandler({PruebatException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public ErrorResourceResponse handlePruebatException(PruebatException exception) {
+    public ResponseEntity<ErrorResourceResponse> handlePruebatException(PruebatException exception) {
         ErrorResource error = getError(exception);
         log.error("Procesada PruebatException: {}", error.getDescription());
-        return new ErrorResourceResponse(error);
+        return ResponseEntity.unprocessableEntity().body(new ErrorResourceResponse(error));
     }
 
     private ErrorResource getError(PruebatException exception) {
@@ -41,7 +42,7 @@ public class DomainExceptionHandler {
 
     private static String getErrorCode(PruebatException exception) {
         return ofNullable(exception.getCode())
-            .map(ErrorCode::getErrorCode)
+            .map(ErrorCode::getCode)
             .orElse(HttpStatus.UNPROCESSABLE_ENTITY.getReasonPhrase());
     }
 

@@ -1,4 +1,4 @@
-package com.mercadona.pruebt.demo.driving.controllers.adapters.apis;
+package com.mercadona.pruebt.demo.driving.controllers.apis;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

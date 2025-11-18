@@ -5,13 +5,14 @@ import lombok.Getter;
 @Getter
 public enum ErrorCode {
 
-    EXAMPLE_EXCEPTION("MGC-01");
+  EXAMPLE_EXCEPTION("PRT-01"),
+  PRODUCT_NOT_FOUND("PRT-02");
 
-    private final String errorCode;
+  private final String code;
 
-    ErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
+  ErrorCode(String code) {
+    this.code = code;
+  }
 
 }
 

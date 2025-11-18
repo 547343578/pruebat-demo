@@ -19,4 +19,4 @@ spring:
 fwkcna:
   jpa:
     data-migration:
-      disabled: true
+      disabled: false
