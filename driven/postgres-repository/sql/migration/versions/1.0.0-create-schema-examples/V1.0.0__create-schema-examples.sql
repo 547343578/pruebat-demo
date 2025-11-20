@@ -1,3 +1,10 @@
+CREATE TABLE users
+(
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255),
+  CONSTRAINT pk_usuarios PRIMARY KEY (username)
+);
+
 create table products (
    product_id bigserial not null,
    name varchar(100) not null,

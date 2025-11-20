@@ -1,3 +1,5 @@
+INSERT INTO users VALUES ('zhuquing', 'pass123');
+
 INSERT INTO products (product_id, name, description, price, stock, created_at) VALUES
   (1, 'Laptop Pro 15', 'Portátil de alto rendimiento para profesionales.', 1499.99, 10, NOW()),
   (2, 'Auriculares Inalámbricos X2', 'Cancelación activa de ruido y batería de larga duración.', 199.90, 50, NOW()),
