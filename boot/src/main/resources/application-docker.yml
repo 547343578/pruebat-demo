@@ -7,3 +7,11 @@ spring:
     username: sa
     password: root
     driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+fwkcna:
+  jpa:
+    data-migration:
+      disabled: false
