@@ -24,4 +24,8 @@ public interface ProductApi {
   @Operation(summary = "Update a product")
   @PutMapping("/{id}")
   ResponseEntity<Void> updateProduct(@PathVariable Long id, @RequestBody @Validated ProductDto productDto);
+
+  @Operation(summary = "Patch update a product")
+  @PatchMapping("/{id}")
+  ResponseEntity<Void> patchProduct(@PathVariable Long id, @RequestBody ProductDto productDto);
 }

@@ -36,4 +36,10 @@ public class ProductController implements ProductApi {
     port.update(id, mapper.toDomain(productDto));
     return ResponseEntity.noContent().build();
   }
+
+  @Override
+  public ResponseEntity<Void> patchProduct(Long id, ProductDto productDto) {
+    port.patch(id, mapper.toDomain(productDto));
+    return ResponseEntity.noContent().build();
+  }
 }

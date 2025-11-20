@@ -3,6 +3,7 @@ package com.mercadona.pruebt.demo.application.services;
 import com.mercadona.framework.cna.commons.domain.MercadonaPage;
 import com.mercadona.pruebt.demo.application.exceptions.ErrorCode;
 import com.mercadona.pruebt.demo.application.exceptions.PruebatException;
+import com.mercadona.pruebt.demo.application.lib.PatchUtils;
 import com.mercadona.pruebt.demo.application.ports.driven.ProductDbPort;
 import com.mercadona.pruebt.demo.application.ports.driving.ProductPort;
 import com.mercadona.pruebt.demo.domain.products.Product;
@@ -45,5 +46,17 @@ public class ProductUseCase implements ProductPort {
   public void update(Long id, Product product) {
     product.setId(id);
     dbPort.save(product);
+  }
+
+  @Override
+  @Transactional
+  @Caching(evict = {
+    @CacheEvict(value = { "get-product-id"}, key = "#id"),
+    @CacheEvict(value = { "get-products" }, allEntries = true)
+  })
+  public void patch(Long id, Product product) {
+    var existingProduct = dbPort.get(id).orElseThrow(() -> new PruebatException(ErrorCode.PRODUCT_NOT_FOUND, id));
+    PatchUtils.patchObject(existingProduct, product);
+    dbPort.save(existingProduct);
   }
 }

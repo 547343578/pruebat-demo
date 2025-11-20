@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum ErrorCode {
 
   EXAMPLE_EXCEPTION("PRT-01"),
-  PRODUCT_NOT_FOUND("PRT-02");
+  PRODUCT_NOT_FOUND("PRT-02"),
+  PATCH_EXCEPTION("PRT-03");
 
   private final String code;
 

@@ -10,4 +10,6 @@ public interface ProductPort {
   Product get(Long id);
 
   void update(Long id, Product product);
+
+  void patch(Long id, Product product);
 }
