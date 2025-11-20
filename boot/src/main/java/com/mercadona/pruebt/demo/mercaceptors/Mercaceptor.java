@@ -1,6 +1,5 @@
 package com.mercadona.pruebt.demo.mercaceptors;
 
-import com.mercadona.pruebt.demo.config.JwtInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

@@ -1,4 +1,4 @@
-package com.mercadona.pruebt.demo.config;
+package com.mercadona.pruebt.demo.mercaceptors;
 
 import com.mercadona.pruebt.demo.application.exceptions.ErrorCode;
 import com.mercadona.pruebt.demo.application.exceptions.PruebatException;
