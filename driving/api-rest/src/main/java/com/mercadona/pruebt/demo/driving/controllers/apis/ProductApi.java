@@ -6,6 +6,7 @@ import com.mercadona.pruebt.demo.driving.controllers.models.products.ProductDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Product api", description = "Product API")
@@ -22,5 +23,5 @@ public interface ProductApi {
 
   @Operation(summary = "Update a product")
   @PutMapping("/{id}")
-  ResponseEntity<Void> updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto);
+  ResponseEntity<Void> updateProduct(@PathVariable Long id, @RequestBody @Validated ProductDto productDto);
 }

@@ -1,7 +1,8 @@
 package com.mercadona.pruebt.demo.driving.controllers.models.products;
 
-import com.mercadona.pruebt.demo.domain.orders.OrderLine;
 import com.mercadona.pruebt.demo.driving.controllers.models.orders.OrderLineDto;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,10 @@ public class ProductDto {
   private Long id;
   private String name;
   private String description;
+  @NotNull
+  @PositiveOrZero
   private Float price;
+  @NotNull
   private Integer stock;
   private OffsetDateTime createdAt;
 
