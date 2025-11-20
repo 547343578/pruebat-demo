@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -40,6 +42,18 @@ public class ProductController implements ProductApi {
   @Override
   public ResponseEntity<Void> patchProduct(Long id, ProductDto productDto) {
     port.patch(id, mapper.toDomain(productDto));
+    return ResponseEntity.noContent().build();
+  }
+
+  @Override
+  public ResponseEntity<Void> delete(Long id) {
+    port.delete(id);
+    return ResponseEntity.noContent().build();
+  }
+
+  @Override
+  public ResponseEntity<Void> delete(List<Long> ids) {
+    port.deleteAll(ids);
     return ResponseEntity.noContent().build();
   }
 }

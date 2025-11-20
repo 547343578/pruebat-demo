@@ -16,6 +16,8 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -58,5 +60,25 @@ public class ProductUseCase implements ProductPort {
     var existingProduct = dbPort.get(id).orElseThrow(() -> new PruebatException(ErrorCode.PRODUCT_NOT_FOUND, id));
     PatchUtils.patchObject(existingProduct, product);
     dbPort.save(existingProduct);
+  }
+
+  @Override
+  @Transactional
+  @Caching(evict = {
+    @CacheEvict(value = { "get-product-id"}, key = "#id"),
+    @CacheEvict(value = { "get-products" }, allEntries = true)
+  })
+  public void delete(Long id) {
+    dbPort.delete(id);
+  }
+
+  @Override
+  @Transactional
+  @Caching(evict = {
+    @CacheEvict(value = { "get-product-id"}, allEntries = true),
+    @CacheEvict(value = { "get-products" }, allEntries = true)
+  })
+  public void deleteAll(List<Long> ids) {
+    dbPort.deleteAll(ids);
   }
 }

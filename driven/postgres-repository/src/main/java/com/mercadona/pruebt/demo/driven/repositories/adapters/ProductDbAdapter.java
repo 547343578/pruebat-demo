@@ -60,4 +60,14 @@ public class ProductDbAdapter implements ProductDbPort {
     repository.save(mapper.toDb(product));
   }
 
+  @Override
+  public void delete(Long id) {
+    repository.deleteById(id);
+  }
+
+  @Override
+  public void deleteAll(List<Long> ids) {
+    repository.deleteAllById(ids);
+  }
+
 }

@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name = "Product api", description = "Product API")
 @RequestMapping("/api/v1/products")
 public interface ProductApi {
@@ -28,4 +30,12 @@ public interface ProductApi {
   @Operation(summary = "Patch update a product")
   @PatchMapping("/{id}")
   ResponseEntity<Void> patchProduct(@PathVariable Long id, @RequestBody ProductDto productDto);
+
+  @Operation(summary = "Delete a product")
+  @DeleteMapping("/{id}")
+  ResponseEntity<Void> delete(@PathVariable Long id);
+
+  @Operation(summary = "Delete all product by ids")
+  @PostMapping("/delete")
+  ResponseEntity<Void> delete(@RequestBody List<Long> ids);
 }
