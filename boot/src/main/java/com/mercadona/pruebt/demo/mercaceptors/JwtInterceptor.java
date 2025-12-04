@@ -2,7 +2,6 @@ package com.mercadona.pruebt.demo.mercaceptors;
 
 import com.mercadona.pruebt.demo.application.exceptions.AuthorizationException;
 import com.mercadona.pruebt.demo.application.exceptions.ErrorCode;
-import com.mercadona.pruebt.demo.application.exceptions.PruebatException;
 import com.mercadona.pruebt.demo.application.lib.JwtUtils;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
