@@ -1,5 +1,6 @@
 package com.mercadona.pruebt.demo.mercaceptors;
 
+import com.mercadona.pruebt.demo.application.exceptions.AuthorizationException;
 import com.mercadona.pruebt.demo.application.exceptions.ErrorCode;
 import com.mercadona.pruebt.demo.application.exceptions.PruebatException;
 import com.mercadona.pruebt.demo.application.lib.JwtUtils;
@@ -24,7 +25,7 @@ public class JwtInterceptor implements HandlerInterceptor {
 
     if (authHeader == null || !authHeader.startsWith("Bearer ")) {
       response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-      throw new PruebatException(ErrorCode.UNAUTHORIZED_MISSING_TOKEN);
+      throw new AuthorizationException(ErrorCode.UNAUTHORIZED_MISSING_TOKEN);
     }
 
     String token = authHeader.substring(7);
@@ -35,7 +36,7 @@ public class JwtInterceptor implements HandlerInterceptor {
       request.setAttribute("username", claims.getSubject());
     } catch (Exception e) {
       response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-      throw new PruebatException(ErrorCode.UNAUTHORIZED_INVALID_TOKEN);
+      throw new AuthorizationException(ErrorCode.UNAUTHORIZED_INVALID_TOKEN);
     }
 
     return true;

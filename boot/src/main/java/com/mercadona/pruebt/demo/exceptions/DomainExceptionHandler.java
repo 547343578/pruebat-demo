@@ -4,7 +4,7 @@ package com.mercadona.pruebt.demo.exceptions;
 import com.mercadona.framework.cna.commons.rest.api.model.ErrorResource;
 import com.mercadona.framework.cna.commons.rest.api.model.ErrorResourceResponse;
 import com.mercadona.pruebt.demo.application.exceptions.ErrorCode;
-import com.mercadona.pruebt.demo.application.exceptions.InvalidCredentialsException;
+import com.mercadona.pruebt.demo.application.exceptions.AuthorizationException;
 import com.mercadona.pruebt.demo.application.exceptions.PruebatException;
 import com.mercadona.pruebt.demo.application.lib.MessagesService;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.List;
@@ -33,8 +32,8 @@ public class DomainExceptionHandler {
     return ResponseEntity.unprocessableEntity().body(new ErrorResourceResponse(error));
   }
 
-  @ExceptionHandler({InvalidCredentialsException.class})
-  public ResponseEntity<ErrorResourceResponse> handleInvalidCredentialsException(InvalidCredentialsException exception) {
+  @ExceptionHandler({AuthorizationException.class})
+  public ResponseEntity<ErrorResourceResponse> handleInvalidCredentialsException(AuthorizationException exception) {
     ErrorResource error = getError(exception);
     log.error("Procesada InvalidCredentialsException: {}", error.getDescription());
     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResourceResponse(error));
