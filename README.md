@@ -1,52 +1,37 @@
-Framework Backend Arquetipo Web
+Proyecto para promocion gerente T
 ===================================
+El presente proyecto se ha realizado utilizando el framework de backend con el arquetipo web, a continuación indicaremos unas pautas para facilitar el uso de la aplicación.
 
-
-```bash
-mvn archetype:generate -DarchetypeGroupId=com.mercadona.framework.cna.archetype -DarchetypeArtifactId=fwkcna-archetype-web -DarchetypeVersion=5.0.0
-```
-
-
-
-Podemos ejecutar y ver en funcionamiento el ejemplo incorporado en la generación del proyecto.
-Prerequsitos:
-
-- Docker
+**Prerequisitos**
+- Docker (se tienen dockerizadas tanto la aplicacion como la base de datos)
 - Postman
-- Cliente de postgres (para poder ejecutar SQLs de creación de tablas)
-  Nos posicionamos en el directorio `raiz` del proyecto generado, y realizamos los siguientes pasos:
+- Cliente de postgres
 
-1. Levantamos una bbdd en local utilizando `docker`, en la carpeta `docker`
+**Ejecutar la aplicacion**
 
-   ```bash
-    docker-compose up
-    ```
-2. Creamos las tablas de base de datos del ejemplo utilizando el script situado en la carpeta
-   `driven/repository-jpa/sql/migration/versions.1.0.0-create-schema-examples/V1.0.0__create-schema-examples.sql`
-
-3. Hacemos la instalación en local del proyecto
-
-   ```bash
+1. Para poder ejecutar el proyecto primero debemos generar el fichero `jar` ubicandonos en la carpeta `raiz` del proyecto y ejecutando el comando
+   ```
     mvn clean install
     ```
-
-4. Ejecutamos la aplicación desde la raíz del proyecto con:
-
-   ```bash
-    mvn clean spring-boot:run -pl boot -Dspring-boot.run.profiles=local
+2. Despues de haber generado el `jar` ya podemos crear el contenedor `docker` en donde se ejecutará, ademas de levantar la base de datos, ubicandonos en la carpeta `devops/docker` y ejecutando el comando
+   ```
+    docker-compose up
     ```
+   Con estos pasos ya se tiene la aplicacion y la base de datos listas para su uso.
 
-   o navegando a la carpeta `boot` del proyecto:
+**Contratos**\
+Para la creacion del fichero `zhuquing-openapi-v3.yaml` que define el contrato se ha utilizado la dependencia de `openapi`, que habilita endpoints para la generacion del mismo a partir de las clases definidas como controladores,
+el fichero se encuentra en la carpeta `contracts`dentro del modulo `api-rest`. También se ha facilitado la colleccion de postman `pruebat.postman_collection.json`(generado a partir del contrato) para realizar pruebas en la carpeta `postman`.
 
-    ```bash
-    mvn clean spring-boot:run -Dspring-boot.run.profiles=local
-    ```
+**Credenciales**\
+Para empezar a realizar pruebas, dado que el proyecto esta securizado con JWT, tenemos que obtener un token desde el endpoint `/auth/login` enviandole las credenciales del usuario ya registrado, en este caso
+- Usuario: zhuquing
+- Contraseña: pass123
 
-6. Probamos la aplicación desde `postman`, importamos las collections de la carpeta `driving/api-rest/postman`
-   
-# Microservicio generado a partir de arquetipo
+**Perfiles**\
+Para agilizar el desarrollo del proyecto se han establecido los perfiles
+- **Local:** Usado por el desarrollador para realizar pruebas rapidas sin necesidad de volver a generar la imagen de docker.
+- **Docker:** Para que el examinador solo necesite ejecutar el contenedor de docker para realizar las pruebas que considere necesarias.
 
-Toda la documentación relevante al desarrollo de este tipo de proyectos se encuentra en la guía del
-desarrollador: [Guía del desarrollador](https://fwk.srv.mercadona.com/framework/spring-boot?pathname=/latest/getting-started/first-api-rest/)
-
-Versión del arquetipo: `5.1.0`
+**Notas**\
+Para la creacion de vehiculos se han definido los tipos TRUCK y DRON que son los que se esperan recibir cuando realizamos las llamadas a al creacion y/o actualizacion de estos.

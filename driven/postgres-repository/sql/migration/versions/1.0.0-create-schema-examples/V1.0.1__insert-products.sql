@@ -1,4 +1,4 @@
-INSERT INTO users VALUES ('zhuquing', 'pass123');
+INSERT INTO users VALUES ('zhuquing', 'pass123', 'ADMIN');
 
 INSERT INTO products (product_id, name, description, price, stock, created_at) VALUES
   (1, 'Laptop Pro 15', 'Portátil de alto rendimiento para profesionales.', 1499.99, 10, NOW()),

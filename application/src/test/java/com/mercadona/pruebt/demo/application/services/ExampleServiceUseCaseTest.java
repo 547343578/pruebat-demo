@@ -26,6 +26,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.OffsetDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -261,7 +262,6 @@ class ExampleServiceUseCaseTest {
     Executable execution = () -> service.deleteExample(EXAMPLE_ID);
 
     assertThrows(ExampleNotFoundException.class, execution);
-
   }
 
 }

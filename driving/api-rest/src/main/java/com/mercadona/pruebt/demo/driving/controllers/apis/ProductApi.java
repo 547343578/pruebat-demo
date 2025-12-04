@@ -6,6 +6,7 @@ import com.mercadona.pruebt.demo.driving.controllers.models.products.ProductDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ public interface ProductApi {
 
   @Operation(summary = "Get all products")
   @GetMapping
+  @PreAuthorize("hasRole('ADMIN')")
   ResponseEntity<PageResponseDto<ProductDto>> getAll(ProductQueryDto queryDto);
 
   @Operation(summary = "Get one product by id")

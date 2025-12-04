@@ -1,7 +1,6 @@
 package com.mercadona.pruebt.demo.application.services;
 
-import com.mercadona.pruebt.demo.application.exceptions.ErrorCode;
-import com.mercadona.pruebt.demo.application.exceptions.PruebatException;
+import com.mercadona.pruebt.demo.application.exceptions.InvalidCredentialsException;
 import com.mercadona.pruebt.demo.application.lib.JwtUtils;
 import com.mercadona.pruebt.demo.application.ports.driving.AuthenticationPort;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +16,9 @@ public class AuthenticationUseCase implements AuthenticationPort {
   public String login(String username, String password) {
     var isRegistered = userService.isRegistered(username, password);
     if (!isRegistered) {
-      throw new PruebatException(ErrorCode.NOT_REGISTERED, username);
+      throw new InvalidCredentialsException(username);
     }
-    return JwtUtils.generateToken(username);
+    var user = userService.getUser(username);
+    return JwtUtils.generateToken(user);
   }
 }

@@ -4,6 +4,7 @@ package com.mercadona.pruebt.demo.exceptions;
 import com.mercadona.framework.cna.commons.rest.api.model.ErrorResource;
 import com.mercadona.framework.cna.commons.rest.api.model.ErrorResourceResponse;
 import com.mercadona.pruebt.demo.application.exceptions.ErrorCode;
+import com.mercadona.pruebt.demo.application.exceptions.InvalidCredentialsException;
 import com.mercadona.pruebt.demo.application.exceptions.PruebatException;
 import com.mercadona.pruebt.demo.application.lib.MessagesService;
 import lombok.RequiredArgsConstructor;
@@ -23,35 +24,41 @@ import static java.util.Optional.ofNullable;
 @Slf4j
 public class DomainExceptionHandler {
 
-    private final MessagesService messagesService;
+  private final MessagesService messagesService;
 
-    @ExceptionHandler({PruebatException.class})
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public ResponseEntity<ErrorResourceResponse> handlePruebatException(PruebatException exception) {
-        ErrorResource error = getError(exception);
-        log.error("Procesada PruebatException: {}", error.getDescription());
-        return ResponseEntity.unprocessableEntity().body(new ErrorResourceResponse(error));
-    }
+  @ExceptionHandler({PruebatException.class})
+  public ResponseEntity<ErrorResourceResponse> handlePruebatException(PruebatException exception) {
+    ErrorResource error = getError(exception);
+    log.error("Procesada PruebatException: {}", error.getDescription());
+    return ResponseEntity.unprocessableEntity().body(new ErrorResourceResponse(error));
+  }
 
-    private ErrorResource getError(PruebatException exception) {
-        String message = messagesService.getMessage(exception.getCode(), exception.getParameters());
-        List<String> details = exception.getDetails();
-        String errorCode = getErrorCode(exception);
-        return getError(errorCode, message, details);
-    }
+  @ExceptionHandler({InvalidCredentialsException.class})
+  public ResponseEntity<ErrorResourceResponse> handleInvalidCredentialsException(InvalidCredentialsException exception) {
+    ErrorResource error = getError(exception);
+    log.error("Procesada InvalidCredentialsException: {}", error.getDescription());
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResourceResponse(error));
+  }
 
-    private static String getErrorCode(PruebatException exception) {
-        return ofNullable(exception.getCode())
-            .map(ErrorCode::getCode)
-            .orElse(HttpStatus.UNPROCESSABLE_ENTITY.getReasonPhrase());
-    }
+  private ErrorResource getError(PruebatException exception) {
+    String message = messagesService.getMessage(exception.getCode(), exception.getParameters());
+    List<String> details = exception.getDetails();
+    String errorCode = getErrorCode(exception);
+    return getError(errorCode, message, details);
+  }
 
-    private ErrorResource getError(String errorCode, String message, List<String> details) {
-        return ErrorResource.builder()
-            .code(errorCode)
-            .description(message)
-            .details(details)
-            .build();
-    }
+  private static String getErrorCode(PruebatException exception) {
+    return ofNullable(exception.getCode())
+      .map(ErrorCode::getCode)
+      .orElse(HttpStatus.UNPROCESSABLE_ENTITY.getReasonPhrase());
+  }
+
+  private ErrorResource getError(String errorCode, String message, List<String> details) {
+    return ErrorResource.builder()
+      .code(errorCode)
+      .description(message)
+      .details(details)
+      .build();
+  }
 
 }

@@ -5,7 +5,7 @@ metadata:
     title: Quickstart service demo
 spec:
   deploy:
-    apiFileName: examples-openapi-v3.yaml
+    apiFileName: zhuquing-openapi-v3.yaml
     type:
       fwkSpringBoot:
         groupId: com.mercadona.pruebat.web-demo
