@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mercadona.pruebt.demo.domain.Example;
 import com.mercadona.pruebt.demo.driven.repositories.mappers.ExampleMapper;
-import com.mercadona.pruebt.demo.driven.repositories.ExampleMOJpaRepository;
+import com.mercadona.pruebt.demo.driven.repositories.repositories.ExampleMOJpaRepository;
 import com.mercadona.pruebt.demo.application.ports.driven.ExampleRepositoryPort;
 
 import lombok.AllArgsConstructor;

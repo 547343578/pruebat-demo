@@ -23,7 +23,7 @@ public class AptitudTrabajadorMO {
   private Long trabajadorId;
 
   @Column(name = "aptitud_id")
-  private Long aptitud_id;
+  private Long aptitudId;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "trabajador_id", referencedColumnName = "trabajador_id", insertable = false, updatable = false)

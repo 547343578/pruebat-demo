@@ -5,7 +5,7 @@ import com.mercadona.framework.cna.lib.repository.builders.MercadonaPageBuilder;
 import com.mercadona.pruebt.demo.application.ports.driven.ProductDbPort;
 import com.mercadona.pruebt.demo.domain.products.Product;
 import com.mercadona.pruebt.demo.domain.products.ProductQuery;
-import com.mercadona.pruebt.demo.driven.repositories.ProductRepository;
+import com.mercadona.pruebt.demo.driven.repositories.repositories.ProductRepository;
 import com.mercadona.pruebt.demo.driven.repositories.mappers.products.ProductDbMapper;
 import com.mercadona.pruebt.demo.driven.repositories.models.products.ProductMO;
 import com.mercadona.pruebt.demo.driven.repositories.specifications.ProductSpecification;

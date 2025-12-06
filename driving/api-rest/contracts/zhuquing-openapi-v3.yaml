@@ -7,6 +7,8 @@ servers:
   - url: http://localhost:8080
     description: Generated server url
 tags:
+  - name: Trabajador api
+    description: Trabajador API
   - name: Product api
     description: Product API
   - name: Echo api
@@ -30,48 +32,42 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExampleResourceResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
           content:
-            '*/*':
+            application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '500':
+                $ref: "#/components/schemas/ExampleResourceResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
+                $ref: "#/components/schemas/ErrorResourceResponse"
     put:
       tags:
         - examples
@@ -90,51 +86,45 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExampleRequest'
+              $ref: "#/components/schemas/ExampleRequest"
         required: true
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExampleResourceResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
           content:
-            '*/*':
+            application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '500':
+                $ref: "#/components/schemas/ExampleResourceResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
+                $ref: "#/components/schemas/ErrorResourceResponse"
     delete:
       tags:
         - examples
@@ -150,49 +140,43 @@ paths:
             type: integer
             format: int64
       responses:
-        '202':
-          description: No content
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "202":
+          description: No content
+        "400":
+          description: Bad Request
           content:
-            '*/*':
+            application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '500':
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-  /api/v1/products/{id}:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+  /api/v1/trabajadores/{id}:
     get:
       tags:
-        - Product api
-      summary: Get one product by id
+        - Trabajador api
+      summary: Consulta todos los trabajadores
       operationId: getById
       parameters:
         - name: id
@@ -202,24 +186,92 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProductDto'
-        '404':
+        "404":
           description: Not Found
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
+                $ref: "#/components/schemas/TrabajadorDto"
+    put:
+      tags:
+        - Trabajador api
+      summary: Consulta todos los trabajadores
+      operationId: update
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrabajadorDto"
+        required: true
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
+    delete:
+      tags:
+        - Trabajador api
+      summary: Consulta todos los trabajadores
+      operationId: delete_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
+  /api/v1/products/{id}:
+    get:
+      tags:
+        - Product api
+      summary: Get one product by id
+      operationId: getById_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ProductDto"
     put:
       tags:
         - Product api
@@ -236,23 +288,65 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductDto'
+              $ref: "#/components/schemas/ProductDto"
         required: true
       responses:
-        '200':
-          description: OK
-        '404':
+        "404":
           description: Not Found
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
+    delete:
+      tags:
+        - Product api
+      summary: Delete a product
+      operationId: delete_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
+    patch:
+      tags:
+        - Product api
+      summary: Patch update a product
+      operationId: patchProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductDto"
+        required: true
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
   /examples:
     get:
       tags:
@@ -263,7 +357,8 @@ paths:
       parameters:
         - name: firstPage
           in: query
-          description: Requested page (first page is page 1). If not specified 1 is used. [Cannot be negative or zero]
+          description: "Requested page (first page is page 1). If not specified 1 is\
+          \ used. [Cannot be negative or zero]"
           required: false
           schema:
             type: integer
@@ -271,7 +366,8 @@ paths:
             default: 1
         - name: pageSize
           in: query
-          description: Number of retrieved elements per page. if not specified 10 is used. [Cannot be less than 1]
+          description: "Number of retrieved elements per page. if not specified 10 is\
+          \ used. [Cannot be less than 1]"
           required: false
           schema:
             type: integer
@@ -279,53 +375,48 @@ paths:
             default: 10
         - name: sort
           in: query
-          description: Sort of the query. [sort=+id] will order asc by id, or [sort=+id] desc by id). Default unsorted.
+          description: "Sort of the query. [sort=+id] will order asc by id, or [sort=+id]\
+          \ desc by id). Default unsorted."
           required: false
           schema:
             type: string
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExampleResourceCollectionResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
           content:
-            '*/*':
+            application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '500':
+                $ref: "#/components/schemas/ExampleResourceCollectionResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
+                $ref: "#/components/schemas/ErrorResourceResponse"
     post:
       tags:
         - examples
@@ -336,106 +427,181 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExampleRequest'
+              $ref: "#/components/schemas/ExampleRequest"
         required: true
       responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExampleResourceResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "201":
+          description: Created
           content:
-            '*/*':
+            application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '500':
+                $ref: "#/components/schemas/ExampleResourceResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
+                $ref: "#/components/schemas/ErrorResourceResponse"
+  /auth/login:
+    post:
+      tags:
+        - authentication-controller
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequestDto"
+        required: true
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/LoginResponseDto"
+  /api/v1/trabajadores:
+    get:
+      tags:
+        - Trabajador api
+      summary: Consulta todos los trabajadores
+      operationId: getAll
+      parameters:
+        - name: pageRequestDto
+          in: query
+          required: true
+          schema:
+            $ref: "#/components/schemas/PageRequestDto"
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PageResponseDtoTrabajadorDto"
+    post:
+      tags:
+        - Trabajador api
+      summary: Consulta todos los trabajadores
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrabajadorDto"
+        required: true
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
+  /api/v1/products/delete:
+    post:
+      tags:
+        - Product api
+      summary: Delete all product by ids
+      operationId: delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+        required: true
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
   /error:
     get:
       tags:
         - custom-error-controller
       operationId: handleError
       responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '404':
+        "404":
           description: Not Found
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
+                $ref: "#/components/schemas/ErrorResourceResponse"
   /api/v1/products:
     get:
       tags:
         - Product api
       summary: Get all products
-      operationId: getAll
+      operationId: getAll_1
       parameters:
         - name: queryDto
           in: query
           required: true
           schema:
-            $ref: '#/components/schemas/ProductQueryDto'
+            $ref: "#/components/schemas/ProductQueryDto"
       responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/PageResponseDtoProductDto'
-        '404':
+        "404":
           description: Not Found
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
+          description: OK
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
+                $ref: "#/components/schemas/PageResponseDtoProductDto"
   /api/v1/echo:
     get:
       tags:
@@ -443,24 +609,18 @@ paths:
       summary: Says hello
       operationId: hello
       responses:
-        '200':
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResourceResponse"
+        "200":
           description: OK
           content:
             '*/*':
               schema:
                 type: string
-        '404':
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
-        '422':
-          description: Unprocessable Entity
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorResourceResponse'
 components:
   schemas:
     ErrorResource:
@@ -478,7 +638,7 @@ components:
       type: object
       properties:
         error:
-          $ref: '#/components/schemas/ErrorResource'
+          $ref: "#/components/schemas/ErrorResource"
     ExampleResource:
       type: object
       properties:
@@ -506,7 +666,7 @@ components:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/ExampleResource'
+          $ref: "#/components/schemas/ExampleResource"
     ExampleRequest:
       required:
         - creationTime
@@ -535,7 +695,7 @@ components:
             - DNI
             - NIE
         identification:
-          pattern: (?:(?=^[0-9])[0-9]{8}[A-Z]{1}$|(?!^[0-9])[A-Z]{1}[0-9]{7}[A-Z]{1}$)
+          pattern: "(?:(?=^[0-9])[0-9]{8}[A-Z]{1}$|(?!^[0-9])[A-Z]{1}[0-9]{7}[A-Z]{1}$)"
           type: string
         numberOfDaysInWeek:
           maximum: 7
@@ -543,6 +703,36 @@ components:
           type: integer
           format: int32
       description: exampleRequest
+    AptitudDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        descripcion:
+          type: string
+    TrabajadorDto:
+      required:
+        - dni
+        - id
+        - nombre
+        - tiendaId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        dni:
+          type: string
+        tiendaId:
+          type: integer
+          format: int64
+        aptitudes:
+          type: array
+          items:
+            $ref: "#/components/schemas/AptitudDto"
     OrderDto:
       type: object
       properties:
@@ -579,8 +769,11 @@ components:
           type: number
           format: float
         order:
-          $ref: '#/components/schemas/OrderDto'
+          $ref: "#/components/schemas/OrderDto"
     ProductDto:
+      required:
+        - price
+        - stock
       type: object
       properties:
         id:
@@ -603,21 +796,36 @@ components:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/OrderLineDto'
+            $ref: "#/components/schemas/OrderLineDto"
+    LoginRequestDto:
+      required:
+        - password
+        - username
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    LoginResponseDto:
+      type: object
+      properties:
+        token:
+          type: string
     ExampleResourceCollection:
       type: object
       properties:
         examples:
           type: array
           items:
-            $ref: '#/components/schemas/ExampleResource'
+            $ref: "#/components/schemas/ExampleResource"
     ExampleResourceCollectionResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/ExampleResourceCollection'
+          $ref: "#/components/schemas/ExampleResourceCollection"
         pagination:
-          $ref: '#/components/schemas/Pagination'
+          $ref: "#/components/schemas/Pagination"
     Pagination:
       type: object
       properties:
@@ -637,6 +845,26 @@ components:
           type: string
         previousPage:
           type: string
+    PageRequestDto:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        order:
+          type: string
+    PageResponseDtoTrabajadorDto:
+      type: object
+      properties:
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/TrabajadorDto"
     ProductQueryDto:
       type: object
       properties:
@@ -659,37 +887,15 @@ components:
       type: object
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginationDto'
+          $ref: "#/components/schemas/Pagination"
         data:
           type: array
           items:
-            $ref: '#/components/schemas/ProductDto'
-    PaginationDto:
-      type: object
-      properties:
-        requestedPage:
-          type: integer
-          format: int32
-        requestedSize:
-          type: integer
-          format: int32
-        retrievedResults:
-          type: integer
-          format: int32
-        totalResults:
-          type: integer
-          format: int64
-        nextPage:
-          type: string
-        previousPage:
-          type: string
-        totalPages:
-          type: integer
-          format: int32
+            $ref: "#/components/schemas/ProductDto"
   securitySchemes:
     adfs:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: ''
+          authorizationUrl: ""
           scopes: {}

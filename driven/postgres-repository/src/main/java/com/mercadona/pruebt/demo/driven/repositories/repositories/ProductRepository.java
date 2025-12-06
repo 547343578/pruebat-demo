@@ -1,4 +1,4 @@
-package com.mercadona.pruebt.demo.driven.repositories;
+package com.mercadona.pruebt.demo.driven.repositories.repositories;
 
 import com.mercadona.pruebt.demo.driven.repositories.models.products.ProductMO;
 import org.springframework.data.jpa.repository.JpaRepository;

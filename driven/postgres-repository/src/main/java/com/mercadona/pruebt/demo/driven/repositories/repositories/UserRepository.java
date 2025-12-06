@@ -1,6 +1,5 @@
-package com.mercadona.pruebt.demo.driven.repositories;
+package com.mercadona.pruebt.demo.driven.repositories.repositories;
 
-import aj.org.objectweb.asm.commons.Remapper;
 import com.mercadona.pruebt.demo.driven.repositories.models.UserMO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -16,6 +16,6 @@ public class Mercaceptor implements WebMvcConfigurer {
   public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(localeInterceptor).order(Integer.MAX_VALUE);
     registry.addInterceptor(jwtInterceptor).addPathPatterns("/api/v1/**")
-      .excludePathPatterns("/auth/**");
+      .excludePathPatterns("/auth/**", "/api/v1/trabajadores/**");
   }
 }

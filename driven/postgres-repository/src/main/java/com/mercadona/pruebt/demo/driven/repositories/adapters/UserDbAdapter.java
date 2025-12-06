@@ -1,10 +1,8 @@
 package com.mercadona.pruebt.demo.driven.repositories.adapters;
 
-import com.mercadona.pruebt.demo.application.exceptions.ErrorCode;
-import com.mercadona.pruebt.demo.application.exceptions.PruebatException;
 import com.mercadona.pruebt.demo.application.ports.driven.UserDbPort;
 import com.mercadona.pruebt.demo.domain.users.User;
-import com.mercadona.pruebt.demo.driven.repositories.UserRepository;
+import com.mercadona.pruebt.demo.driven.repositories.repositories.UserRepository;
 import com.mercadona.pruebt.demo.driven.repositories.mappers.users.UserDbMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
