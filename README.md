@@ -14,7 +14,10 @@ El presente proyecto se ha realizado utilizando el framework de backend con el a
     mvn clean install
     ```
 2. Despues de haber generado el `jar` ya podemos crear el contenedor `docker` en donde se ejecutará, ademas de levantar la base de datos, ubicandonos en la carpeta `devops/docker` y ejecutando el comando
-   ```
+    ```
+    docker-compose build
+    ```
+    ```
     docker-compose up
     ```
    Con estos pasos ya se tiene la aplicacion y la base de datos listas para su uso.
